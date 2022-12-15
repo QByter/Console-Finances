@@ -90,14 +90,9 @@ let finances = [
 
 
 let total=0
-let monthlyProfit=0;
-let greatestIncreaseMonth=0;
-let greatestDecreaseMonth=0;
 let greatesIncreaseAmount=0;
 let greatestDecreaseAmount=0;
 let runningChangeTotal=0;
-let currentMonth=0;
-let lastMonth=0;
 
 //claculation for Total 
 for (let i=0; i<finances.length; i++){
@@ -117,8 +112,7 @@ if (i>0) {
 
     if (monthlyProfit>greatesIncreaseAmount) {
         greatesIncreaseAmount=monthlyProfit;
-        greatestIncreaseMonth=(finances[i]);
-            
+        greatestIncreaseMonth=(finances[i]);          
     }
    
     if (monthlyProfit<greatestDecreaseAmount) {
@@ -139,7 +133,6 @@ console.log("Total Months: "+finances.length);
 console.log("Total: "+"$"+total.toLocaleString());
 console.log("Average Change: "+"$"+(runningChangeTotal/85).toFixed(2));
 console.log("Greatest Increase in Profits: "+greatestIncreaseMonth[0]+" ($"+greatesIncreaseAmount.toLocaleString()+")");
-
 console.log("Greatest Decrease in Profits: "+greatestDecreaseMonth[0]+"($"+greatestDecreaseAmount.toLocaleString()+")");
 
 

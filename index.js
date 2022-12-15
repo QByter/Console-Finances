@@ -90,39 +90,45 @@ let finances = [
 
 
 let total=0
+let monthlyProfit=0;
 let greatestIncreaseMonth=0;
 let greatestDecreaseMonth=0;
-let greatesIncreaseAmount=(finances[0][1]);
-let greatestDecrease=0;
+let greatesIncreaseAmount=0;
+let greatestDecreaseAmount=0;
 let runningChangeTotal=0;
 let currentMonth=0;
 let lastMonth=0;
 
+//claculation for Total 
 for (let i=0; i<finances.length; i++){
 total=total+(finances[i][1]);
+
+
+//calculation for Greatest Increase Amount
 if (finances[i][1]>greatesIncreaseAmount){
     greatesIncreaseAmount=finances[i][1];
 }
 
-
+//calculation for 
 if (i>0) {
-    runningChangeTotal=runningChangeTotal+((currentMonth=finances[i][1])-(lastMonth=finances[i-1][1]));
-    
+    monthlyProfit=((currentMonth=finances[i][1])-(lastMonth=finances[i-1][1]));
+
+    runningChangeTotal=runningChangeTotal+monthlyProfit;
+
+    if (monthlyProfit>greatesIncreaseAmount) {
+        greatesIncreaseAmount=monthlyProfit;
+        greatestIncreaseMonth=(finances[i]);
+            
+    }
+   
+    if (monthlyProfit<greatestDecreaseAmount) {
+        greatestDecreaseAmount=monthlyProfit;
+        greatestDecreaseMonth=(finances[i]);
+    }
+ 
 }
 
-
-
 } 
-
-
-
-
-
-
-
-console.log("The current month value is : "+currentMonth);
-console.log("The last month value is : "+lastMonth)
-console.log("The running change total is :"+runningChangeTotal)
 
 
 
@@ -130,11 +136,10 @@ console.log("");
 console.log("Financial Analasys");
 console.log("-------------------------")
 console.log("Total Months: "+finances.length);
-console.log("Total: "+"$"+total)
-console.log("Average Change: "+"$"+(runningChangeTotal/12));
-console.log("Greatest Increase in Profits: "+greatesIncreaseAmount)
-console.log("Greatest Decrease in Profits: ")
-// console.log("Total: "+finances.length);
+console.log("Total: "+"$"+total.toLocaleString());
+console.log("Average Change: "+"$"+(runningChangeTotal/85).toFixed(2));
+console.log("Greatest Increase in Profits: "+greatestIncreaseMonth[0]+" ($"+greatesIncreaseAmount.toLocaleString()+")");
 
-// console.table(finances)
+console.log("Greatest Decrease in Profits: "+greatestDecreaseMonth[0]+"($"+greatestDecreaseAmount.toLocaleString()+")");
+
 
